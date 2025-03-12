@@ -1,0 +1,209 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('holi.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    overflow: hidden;
+    transition: background-color 0.5s ease;
+    font-family: "Quicksand", sans-serif;
+}
+
+.leftsection span {
+    color: turquoise;
+    font-weight: bold;
+    animation: slideIn 2s ease-in-out infinite;
+}
+
+.leftsection {
+    background-color: rgba(73, 48, 48, 0.8);
+    color: #fff;
+    font-size: 2rem;
+    padding: 10px 20px 0;
+    text-align: center;
+}
+
+.landing {
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.8);
+    background-size: 400% 400%;
+    animation: gradientAnimation 1.5s ease infinite;
+    padding: 40px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    animation: textSlide 2s ease-out;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    animation: textSlide 2s ease-out 1s;
+}
+
+.splash {
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    width: 100%;
+    position: relative;
+}
+
+.butt {
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+button {
+    padding: 15px 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #740f14;
+    transform: scale(1.1);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+/* Color Splash Effect */
+#colorSplashEffect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+}
+
+.splashCircle {
+    position: absolute;
+    border-radius: 50%;
+    animation: splashAnimation 1s ease-out forwards;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes textSlide {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes splashAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Footer */
+.footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    position: absolute;
+    bottom: 0;
+    border-radius: 10px;
+    letter-spacing: 5px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .leftsection {
+        font-size: 1.8rem;
+        padding: 60px 10px;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .leftsection {
+        font-size: 1.5rem;
+        padding: 40px 10px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
