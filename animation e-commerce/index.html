@@ -162,6 +162,7 @@
         }
 
         .hero-content {
+            margin-left: 80px;
             margin-bottom: 30px;
             position: relative;
             z-index: 2;
@@ -173,7 +174,6 @@
             line-height: 1.2;
             margin-bottom: 15px;
             animation: floatText 3s ease-in-out infinite;
-            text-shadow: 0 0 10px rgba(255, 71, 87, 0.7);
         }
 
         @keyframes floatText {
@@ -183,7 +183,6 @@
 
         .hero-content h1 span {
             color: #ff4757;
-            animation: glow 2s ease-in-out infinite alternate;
         }
 
         @keyframes glow {
@@ -192,6 +191,7 @@
         }
 
         .hero-text {
+            width: 50%;
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 20px;
@@ -270,6 +270,7 @@
         }
 
         .collection-header {
+            text-align: center;
             position: relative;
             z-index: 1;
         }
@@ -327,6 +328,9 @@
             position: relative;
             height: 250px;
             overflow: hidden;
+        }
+        .product-image-container img{
+            width: 100%;
         }
 
         .product-image {
@@ -685,14 +689,18 @@
             .section-title {
                 font-size: 42px;
             }
-
+            .sheer-more-overlay{
+                height: fit-content;
+            }
             .product-gallery {
+                justify-self: center;
+                width: 50%;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 30px;
             }
 
             .product-image-container {
-                height: 350px;
+                height: 230px;
             }
 
             .best-seller-container {
