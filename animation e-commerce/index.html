@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Fashion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ====== BASE STYLES ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ====== NAVIGATION ====== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff4757;
+            animation: logoPulse 2s infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 10px 0;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #ff4757;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff4757;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .login-btn {
+            padding: 8px 15px;
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .login-btn:hover::before {
+            left: 100%;
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+
+        .hamburger:hover {
+            transform: rotate(90deg);
+        }
+
+        /* ====== HERO SECTION ====== */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: bubble 15s infinite linear;
+        }
+
+        @keyframes bubble {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-5%, -5%); }
+            50% { transform: translate(-10%, 0); }
+            75% { transform: translate(-5%, 5%); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .hero-content {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            animation: floatText 3s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.7);
+        }
+
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-content h1 span {
+            color: #ff4757;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ff4757, 0 0 10px #ff4757; }
+            to { text-shadow: 0 0 15px #ff4757, 0 0 20px #ff6b81; }
+        }
+
+        .hero-text {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .shop-btn {
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .shop-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .shop-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.6);
+        }
+
+        .shop-btn:hover::before {
+            left: 100%;
+        }
+
+        .hero-image {
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform-style: preserve-3d;
+            transition: all 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        /* ====== NEW COLLECTION ====== */
+        .collection-container {
+            padding: 40px 20px;
+            background-color: white;
+            position: relative;
+        }
+
+        .collection-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .collection-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #222;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
+            animation: underlineGrow 1.5s infinite alternate;
+        }
+
+        @keyframes underlineGrow {
+            from { width: 50px; }
+            to { width: 100px; }
+        }
+
+        .section-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .product-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s;
+            background: white;
+        }
+
+        .product-image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .sheer-more-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .sheer-more-overlay {
+            transform: translateY(0);
+        }
+
+        .sheer-btn {
+            padding: 6px 12px;
+            background: linear-gradient(90deg, #ff4757, #ff6b81);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sheer-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px rgba(255, 71, 87, 0.4);
+        }
+
+        /* ====== BEST FASHION SECTION ====== */
+        .best-fashion-section {
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            background-color: white;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .best-fashion-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .fashion-model {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .fashion-model::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            animation: shine 3s infinite;
+            z-index: 1;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) skew(-20deg); }
+            100% { transform: translateX(100%) skew(-20deg); }
+        }
+
+        .model-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .fashion-model:hover .model-image {
+            transform: scale(1.05);
+        }
+
+        .fashion-tag {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tag-line {
+            font-size: 24px;
+            font-weight: 800;
+            color: #222;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 5px rgba(255, 71, 87, 0.3); }
+            to { text-shadow: 0 0 10px rgba(255, 71, 87, 0.5); }
+        }
+
+        .tag-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat-item {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ff4757;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* ====== BEST SELLER SECTION ====== */
+        .best-seller-container {
+            padding: 30px 20px;
+            background-color: #f8f8f8;
+            position: relative;
+        }
+
+        .best-seller-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/cartographer.png');
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .best-seller-section {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-item {
+            min-width: 80%;
+            scroll-snap-align: start;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .slider-nav {
+            display: none;
+        }
+
+        /* ====== FOOTER ====== */
+        footer {
+            background: linear-gradient(135deg, #222, #444);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6b81;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* ====== TABLET STYLES (768px and up) ====== */
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                width: auto;
+                background: none;
+                box-shadow: none;
+                padding: 0;
+                gap: 20px;
+            }
+
+            .navbar {
+                padding: 25px 40px;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .hero {
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+                padding: 60px 40px;
+            }
+
+            .hero-content {
+                flex: 1;
+                margin-bottom: 0;
+                padding-right: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            .hero-right {
+                flex: 1;
+            }
+
+            .hero-image {
+                max-width: 90%;
+            }
+
+            .product-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .best-fashion-section {
+                flex-direction: row;
+                gap: 30px;
+                padding: 40px;
+            }
+
+            .fashion-model {
+                width: 50%;
+                height: 400px;
+                margin-bottom: 0;
+            }
+
+            .fashion-tag {
+                width: 50%;
+            }
+
+            .product-item {
+                min-width: 45%;
+            }
+
+            .stats {
+                justify-content: flex-start;
+                gap: 30px;
+            }
+        }
+
+        /* ====== DESKTOP STYLES (1024px and up) ====== */
+        @media (min-width: 1024px) {
+            .navbar {
+                padding: 25px 80px;
+            }
+
+            .hero {
+                padding: 80px;
+            }
+
+            .hero-content h1 {
+                font-size: 64px;
+            }
+
+            .collection-container {
+                padding: 80px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .product-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+
+            .product-image-container {
+                height: 350px;
+            }
+
+            .best-seller-container {
+                display: flex;
+                gap: 40px;
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 80px;
+            }
+
+            .best-seller-section {
+                width: 300px;
+                text-align: left;
+                position: sticky;
+                top: 40px;
+                height: fit-content;
+                margin-bottom: 0;
+            }
+
+            .product-slider-section {
+                flex: 1;
+            }
+
+            .product-slider {
+                overflow: visible;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 30px;
+            }
+
+            .product-item {
+                min-width: calc(33.33% - 20px);
+                height: 350px;
+            }
+
+            .product-image {
+                height: 250px;
+            }
+
+            .slider-nav {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 30px;
+            }
+
+            .slider-btn {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: white;
+                border: none;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+                cursor: pointer;
+                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .slider-btn:hover {
+                background: #ff4757;
+                color: white;
+                transform: translateY(-3px);
+            }
+
+            /* Premium Desktop Animations */
+            .product-card {
+                transform-style: preserve-3d;
+                perspective: 1000px;
+            }
+
+            .product-card:hover {
+                transform: perspective(1000px) rotateY(5deg) translateY(-10px);
+            }
+
+            .hero-image {
+                animation: float 3s ease-in-out infinite, rotate 20s linear infinite;
+            }
+
+            @keyframes rotate {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+            .stats {
+                justify-content: space-between;
+            }
+
+            .stat-item {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Anime</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Explore</a>
+            <a href="#">Trending</a>
+            <a href="#">About</a>
+        </div>
+        <button class="login-btn">LOGIN</button>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find The Best<br><span>Fashion Style</span><br>For You</h1>
+            <p class="hero-text">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s.
+            </p>
+            <button class="shop-btn">SHOP NOW</button>
+        </div>
+        <div class="hero-right">
+            <img src="https://plus.unsplash.com/premium_photo-1683121271931-669e09a55414?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Anime Fashion Model" class="hero-image">
+        </div>
+    </section>
+
+    <!-- New Collection -->
+    <section class="collection-container">
+        <div class="collection-header">
+            <h1 class="section-title">New Collection</h1>
+            <p class="section-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        </div>
+        
+        <div class="product-gallery">
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://plus.unsplash.com/premium_photo-1675186049409-f9f8f60ebb5e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Fashion Product 1" class="product-image">
+                    <div class="sheer-more-overlay">
+                        <button class="sheer-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1716369786573-d9bfd79bce28?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Fashion Product 2" class="product-image">
+                    <div class="sheer-more-overlay">
+                        <button class="sheer-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="https://images.unsplash.com/photo-1617178388553-a9d022974a5c?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="Fashion Product 3" class="product-image">
+                    <div class="sheer-more-overlay">
+                        <button class="sheer-btn">Show More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Fashion Section -->
+    <section class="best-fashion-section">
+        <div class="fashion-model">
+            <img src="https://images.unsplash.com/photo-1612215326956-c2bb6228c72d?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Best Fashion Model" class="model-image">
+        </div>
+        <div class="fashion-tag">
+            <p class="tag-line">Best Fashion</p>
+            <p class="tag-line">Since 2K24</p>
+            <p class="tag-description">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+            </p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">2014</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8900+</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1509+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Seller Section -->
+    <section class="best-seller-container">
+        <div class="best-seller-section">
+            <h1 class="section-title">Best Seller</h1>
+            <h2 class="section-subtitle">Products</h2>
+            <p class="section-description">
+                Lovers:pruen is simply dummy text of the printing and rightworking industry.
+                Lovers:pruen has been the industry's
+            </p>
+        </div>
+        
+        <div class="product-slider-section">
+            <div class="slider-container">
+                <div class="product-slider">
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 1" class="product-image">
+                    </div>
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 2" class="product-image">
+                    </div>
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 3" class="product-image">
+                    </div>
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 4" class="product-image">
+                    </div>
+                    <div class="product-item">
+                        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 5" class="product-image">
+                    </div>
+                </div>
+                
+                <div class="slider-nav">
+                    <button class="slider-btn" id="leftBtn">←</button>
+                    <button class="slider-btn" id="rightBtn">→</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+            <p class="copyright">© 2024 Anime Fashion. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Product Slider Functionality
+        const slider = document.querySelector('.product-slider');
+        const leftBtn = document.getElementById('leftBtn');
+        const rightBtn = document.getElementById('rightBtn');
+        const productItems = document.querySelectorAll('.product-item');
+        let currentIndex = 0;
+
+        function updateSlider() {
+            if (window.innerWidth >= 1024) {
+                // Desktop - show 3 items at a time
+                slider.style.transform = `translateX(-${currentIndex * 33.33}%)`;
+            } else if (window.innerWidth >= 768) {
+                // Tablet - show 2 items at a time
+                slider.style.transform = `translateX(-${currentIndex * 50}%)`;
+            } else {
+                // Mobile - show 1 item at a time
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+        }
+
+        rightBtn.addEventListener('click', function() {
+            const maxIndex = window.innerWidth >= 1024 ? productItems.length - 3 : 
+                           window.innerWidth >= 768 ? productItems.length - 2 : 
+                           productItems.length - 1;
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateSlider();
+            }
+        });
+
+        leftBtn.addEventListener('click', function() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
+
+        // Auto-scroll slider on desktop
+        if (window.innerWidth >= 1024) {
+            setInterval(() => {
+                const maxIndex = productItems.length - 3;
+                currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+                updateSlider();
+            }, 3000);
+        }
+
+        // Initialize slider
+        updateSlider();
+    </script>
+</body>
+</html>
