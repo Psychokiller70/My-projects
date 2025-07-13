@@ -1,2 +1,2 @@
-
-Welcome to my project repo
+welcome to my project repo
+my project are responsive
