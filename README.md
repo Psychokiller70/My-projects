@@ -31,9 +31,3 @@
 _Replace the image URL with your own screenshots or GIFs._
 
 ---
-
-## 📦 Getting Started
-
-```bash
-git clone https://github.com/Psychokiller70/My-projects.git
-cd My-projects/project-folder
