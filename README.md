@@ -24,8 +24,6 @@
 
 ## 🌌 3D-Style Preview (Concept)
 
-> _Want it to really pop?_ Add project screenshots, diagrams, or even 3D mockups here:
-
 <img src="demo.jpg" width="80%" alt="Project 3D Preview">
 
 _Replace the image URL with your own screenshots or GIFs._
