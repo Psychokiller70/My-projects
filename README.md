@@ -29,3 +29,4 @@
 _Replace the image URL with your own screenshots or GIFs._
 
 ---
+thanks for visiting repo 🤠
