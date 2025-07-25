@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Chat App</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
+</head>
+<body>
+
+  <main class="chat-container">
+    <header class="chat-header">
+      <span>Chat App</span>
+
+      <!-- 🔘 3-Dot Menu -->
+      <div class="menu-wrapper">
+        <button id="menu-button" class="menu-button">⋮</button>
+        <div id="menu-dropdown" class="menu-dropdown hidden">
+          <button id="clear-chat" class="menu-item">🧹 Clear Chat</button>
+        </div>
+      </div>
+    </header>
+
+    <div id="chat-messages" class="chat-messages"></div>
+
+    <form id="chat-form" class="chat-form">
+      <button type="button" id="emoji-toggle" class="emoji-button">😊</button>
+      <emoji-picker id="emoji-picker" class="hidden emoji-picker"></emoji-picker>
+
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Type a message..."
+        autocomplete="off"
+        class="chat-input"
+      />
+      <button type="submit" class="send-button">Send</button>
+    </form>
+  </main>
+
+  <!-- 🚨 Delete Modal -->
+  <div id="delete-modal" class="modal hidden">
+    <div class="modal-content">
+      <p>Delete this message?</p>
+      <button id="delete-for-me" class="modal-btn danger">Delete for Me</button>
+      <button id="delete-for-everyone" class="modal-btn warning">Delete for Everyone</button>
+      <button id="cancel-delete" class="modal-btn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Sockets and Script -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
