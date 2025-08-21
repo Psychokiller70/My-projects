@@ -31,3 +31,10 @@ console.log("hello");
 for(i=1; i<=20; i++){
     console.log("hello " + i)
 }
+
+
+// Array ka use karte hue
+let fruits = ["Apple", "Banana", "Orange"];
+for(let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+}
