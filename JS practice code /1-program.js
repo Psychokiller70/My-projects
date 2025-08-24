@@ -38,3 +38,11 @@ let fruits = ["Apple", "Banana", "Orange"];
 for(let i = 0; i < fruits.length; i++) {
     console.log(fruits[i]);
 }
+
+// 
+console.log("hello world !")
+
+let dom = document.body.childNodes[1];
+
+dom.firstChild.style.background-color = 'red';
+
