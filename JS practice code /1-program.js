@@ -46,3 +46,24 @@ let dom = document.body.childNodes[1];
 
 dom.firstChild.style.background-color = 'red';
 
+
+function validateForm() {
+  // Name field
+  let name = document.getElementById("name").value;
+  if (name.trim() === "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  
+  // Email field
+  let email = document.getElementById("email").value;
+  // Basic email format check
+  let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address");
+    return false;
+  }
+  
+  // Agar sab sahi hai toh form submit ho jayega
+  return true;
+}
