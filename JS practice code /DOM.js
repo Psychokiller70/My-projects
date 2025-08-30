@@ -26,3 +26,27 @@ document.querySelector(".conatiner").tagName
 "DIV"
 document.querySelector(".conatiner").nodeName
 "DIV" 
+
+document.querySelector(".conatiner").textContent
+"
+		hey i am a box
+	" 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
