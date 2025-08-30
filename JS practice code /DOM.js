@@ -34,6 +34,10 @@ document.querySelector(".conatiner").textContent
 
 
 
+document.querySelector(".conatiner").hidden="true"
+"true" 
+
+
 
 
 
