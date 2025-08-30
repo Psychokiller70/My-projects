@@ -1,3 +1,7 @@
+
+document.designMode = "on"
+"on" 
+
 document.querySelector(".box")
 <div class="box">
 
@@ -36,6 +40,14 @@ document.querySelector(".conatiner").textContent
 
 document.querySelector(".conatiner").hidden="true"
 "true" 
+
+
+document.querySelector(".conatiner").hasAttribute("style")
+true
+document.querySelector(".conatiner").getAttribute("style")
+"background-color: red;"
+document.querySelector(".conatiner").setAttribute("style", "background-color: blue")
+undefined 
 
 
 
